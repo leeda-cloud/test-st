@@ -57,7 +57,7 @@
                   <div class="event-charge-box">
                     <div class="event-charge-inner">
                       <!-- 쿠폰 활성화시 on 추가 -->
-                      <span class="icon-coupon cp1 on"></span>
+                      <span class="icon-coupon cp1"></span>
                       <span class="icon-coupon cp2"></span>
                       <span class="icon-coupon cp3"></span>
                       <!-- //쿠폰 활성화시 on 추가 -->
@@ -124,16 +124,24 @@
                         let arrow = document.querySelector('.arrow')
                         let num = document.querySelector('.gauge-num')
                         let progress = document.querySelector('.gauge-progress')
+                        let coupon = document.querySelectorAll('.icon-coupon')
+                        let couponNum = [60, 120, 180]
 
                         range.addEventListener('input', (e) => {
                           let value = e.target.value
                           arrow.style.transform = `rotate(${
                             value <= 3 ? 3 : value >= 177 ? 177 : value
                           }deg)`
-                          console.log(e.target.value)
                           num.innerHTML = value
                           progress.style.strokeDashoffset =
                             220 - (220 * value) / 180
+                          couponNum.forEach((item, i) => {
+                            if (value >= item) {
+                              coupon[i].classList.add('on')
+                            } else {
+                              coupon[i].classList.remove('on')
+                            }
+                          })
                         })
                       </script>
                     </div>
