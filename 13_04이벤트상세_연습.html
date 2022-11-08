@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, viewport-fit=cover"> -->
+    <meta name="viewport" content="user-scalable=0, initial-scale=1.0, maximum-scale=1.0, width=device-width, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=yes">
+    <title>Energy Plus EV App</title>
+
+    <!-- Library CSS -->
+    <link rel="stylesheet" href="lib/swiper/swiper-bundle.min.css">
+    <!-- 20201211 accordion 추가-->
+    <link rel="stylesheet" href="lib/accordion-js/accordion.min.css">
+    <link rel="stylesheet" href="css/ep-style.css">
+    <!-- // Library CSS -->
+
+    <!-- Library JS -->
+    <!-- <script src="https://unpkg.com/vue/dist/vue.min.js"></script> vue CDN -->
+    <!--<script src="https://unpkg.com/buefy/dist/buefy.min.js"></script>  buefy CDN -->
+    <script src="lib/swiper/swiper-bundle.min.js"></script>
+    <!-- 20201211 lottie-player 추가-->
+    <script src="lib/lottie/lottie-player.js"></script>
+    <!-- 20201211 accordion 추가-->
+    <script src="lib/accordion-js/accordion.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.13/lottie.min.js"></script>
+
+    <!-- // Library JS -->
+    <script src="js/ui.js"></script>
+</head>
+
+<body>
+    <div class="skipNavi">
+        <a href="#">본문 바로가기</a>
+    </div>
+    <div id="wrap" role="main">
+        <div id="container">
+            <!-- Contents -->
+            <div class="container content-area">
+                <!-- top fixed section -->
+                <section class="ev-event-wrap">
+                    <div class="inner event-in">
+
+                        <!-- 221104수정 -->
+                        <div class="event-img-wrap ">
+                            <div class="rel">
+                                <img src="images/event-charge-bg.png" alt="에너지플러스 EV회원으로 충전하면 최대 15,000원 혜택">
+                                <div class="event-charge-box">
+                                    <div class="event-charge-inner">
+                                        <!-- 쿠폰 활성화시 on 추가 -->
+                                        <span class="icon-coupon cp1 on"></span>
+                                        <span class="icon-coupon cp2"></span>
+                                        <span class="icon-coupon cp3"></span>
+                                        <!-- //쿠폰 활성화시 on 추가 -->
+                                        <span class="bg-coin"></span>
+                                        <div class="event-gauge">
+                                            <img src="images/event-gauge-bg.png" alt="이벤트">
+                                            <!-- 게이지 화살표 변경 부분은 아래 transform: rotate 값을 3 ~ 179으로 조절 가능합니다. -->
+                                            <i class="arrow" style="transform: rotate(53deg);"></i>
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 668 420">
+                                                <g class="progress">
+                                                    <!-- 게이지 변경 부분은 아래 path stroke-dashoffset 값을 -840 ~ 0으로 조절 가능합니다. -->
+                                                    <path data-name="Graph02" style="stroke-dashoffset: -600;" d="M560 295.724a13.25 13.25 0 0 1 .412-3.287c-.234-146.946-120-266.425-267.189-266.425-146.807 0-266.339 118.866-267.184 265.295A13.225" transform="translate(12 9)" />
+                                                </g>
+                                                <g class="half">
+                                                    <path d="M449.259 237.5H.74C.581 234.017.5 230.487.5 227c0-15.233 1.535-30.455 4.561-45.245a223.372 223.372 0 0 1 13.081-42.14 224.522 224.522 0 0 1 20.699-38.135 226.118 226.118 0 0 1 27.414-33.226A226.118 226.118 0 0 1 99.48 40.841a224.523 224.523 0 0 1 38.135-20.7 223.372 223.372 0 0 1 42.14-13.08A226.162 226.162 0 0 1 225 2.5c15.233 0 30.455 1.534 45.245 4.56a223.371 223.371 0 0 1 42.14 13.082A224.518 224.518 0 0 1 350.52 40.84a226.115 226.115 0 0 1 33.226 27.413 226.114 226.114 0 0 1 27.413 33.226 224.517 224.517 0 0 1 20.699 38.135 223.366 223.366 0 0 1 13.081 42.14A226.161 226.161 0 0 1 449.5 227c0 3.487-.081 7.016-.241 10.5z" style="stroke:none"></path>
+
+                                                </g>
+                                                <text data-name="0" class="text1" x="240" y="210">충전실적</text>
+                                                <text data-name="0" class="text2" x="50%" y="305" dominant-baseline="bottom" text-anchor="middle">180<tspan>kWh</tspan></text>
+                                            </svg>
+                                            <input type="range" id="gaugeControl" min="0" max="180" step="1" value="0" style="z-index:10">
+                                        </div>
+                                        <script>
+
+                                        </script>
+                                        <!-- svg를 줄여보자 
+                                        <div class="svg-progress" >
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 668 420">
+                                                <path xmlns="http://www.w3.org/2000/svg" d="M573.431 305.873a13.027 13.027 0 0 1-13.017-13.007c0-147.144-119.861-266.854-267.189-266.854S26.036 145.722 26.036 292.866a13.018 13.018 0 0 1-26.036 0C0 131.379 131.54 0 293.225 0s293.224 131.379 293.224 292.866a13.027 13.027 0 0 1-13.018 13.007z" style="fill:url(#hnlxwgfj4a);transform: translate(4%,9%);"/>
+                                                <defs>
+                                                    <linearGradient xmlns="http://www.w3.org/2000/svg" id="hnlxwgfj4a" x1=".5" y1="1" x2=".5" gradientUnits="objectBoundingBox">
+                                                        <stop offset="0" stop-color="#e2e2e2"/>
+                                                        <stop offset="1" stop-color="#fafafa"/>
+                                                    </linearGradient>
+                                                    <filter id="kqu5r1z34a" x="0" y="0" width="570" height="356" filterUnits="userSpaceOnUse">
+                                                        <feOffset dx="30" dy="30"/>
+                                                        <feGaussianBlur stdDeviation="20" result="blur"/>
+                                                        <feFlood flood-opacity=".451"/>
+                                                        <feComposite operator="in" in2="blur"/>
+                                                        <feComposite in="SourceGraphic"/>
+                                                    </filter>
+                                                    <filter id="evktu3yfda" x="0" y="0" width="610.449" height="332.948" filterUnits="userSpaceOnUse">
+                                                        <feOffset dy="3"/>
+                                                        <feGaussianBlur stdDeviation="3" result="blur"/>
+                                                        <feFlood flood-opacity=".161"/>
+                                                        <feComposite operator="in" in2="blur"/>
+                                                        <feComposite in="SourceGraphic"/>
+                                                    </filter>
+                                                </defs>
+                                                <g class="bar">
+                                                    <g data-name="Graph01" style="fill:#fff">
+                                                        <path d="M449.259 237.5H.74C.581 234.017.5 230.487.5 227c0-15.233 1.535-30.455 4.561-45.245a223.372 223.372 0 0 1 13.081-42.14 224.522 224.522 0 0 1 20.699-38.135 226.118 226.118 0 0 1 27.414-33.226A226.118 226.118 0 0 1 99.48 40.841a224.523 224.523 0 0 1 38.135-20.7 223.372 223.372 0 0 1 42.14-13.08A226.162 226.162 0 0 1 225 2.5c15.233 0 30.455 1.534 45.245 4.56a223.371 223.371 0 0 1 42.14 13.082A224.518 224.518 0 0 1 350.52 40.84a226.115 226.115 0 0 1 33.226 27.413 226.114 226.114 0 0 1 27.413 33.226 224.517 224.517 0 0 1 20.699 38.135 223.366 223.366 0 0 1 13.081 42.14A226.161 226.161 0 0 1 449.5 227c0 3.487-.081 7.016-.241 10.5z" style="stroke:none" transform="translate(30 28)"/>
+                                                        <path d="M448.78 237c.146-3.321.22-6.68.22-10 0-15.2-1.531-30.388-4.55-45.145a222.862 222.862 0 0 0-13.053-42.046 224.02 224.02 0 0 0-20.652-38.049 225.615 225.615 0 0 0-27.353-33.152 225.613 225.613 0 0 0-33.152-27.353 224.022 224.022 0 0 0-38.05-20.653 222.87 222.87 0 0 0-42.045-13.051A225.658 225.658 0 0 0 225 3a225.656 225.656 0 0 0-45.145 4.55 222.87 222.87 0 0 0-42.046 13.052A224.02 224.02 0 0 0 99.76 41.255a225.618 225.618 0 0 0-33.152 27.353 225.618 225.618 0 0 0-27.353 33.152 224.02 224.02 0 0 0-20.652 38.05A222.87 222.87 0 0 0 5.55 181.854 225.656 225.656 0 0 0 1 227c0 3.32.074 6.68.22 10h447.56m.956 1H.264A229.95 229.95 0 0 1 0 227c0-15.266 1.538-30.523 4.571-45.346a223.874 223.874 0 0 1 13.11-42.234 225.024 225.024 0 0 1 20.745-38.22 226.62 226.62 0 0 1 27.475-33.3 226.62 226.62 0 0 1 33.3-27.474 225.024 225.024 0 0 1 38.219-20.745 223.875 223.875 0 0 1 42.235-13.11A226.661 226.661 0 0 1 225 2c15.266 0 30.523 1.538 45.346 4.571a223.873 223.873 0 0 1 42.235 13.11A225.02 225.02 0 0 1 350.8 40.426a226.617 226.617 0 0 1 33.3 27.475 226.615 226.615 0 0 1 27.474 33.3 225.022 225.022 0 0 1 20.745 38.219 223.868 223.868 0 0 1 13.11 42.234A226.66 226.66 0 0 1 450 227c0 3.653-.089 7.354-.264 10.999z" style="fill:#e6e6e6;stroke:none" transform="translate(30 28)"/>
+                                                    </g>
+                                                </g>
+                                                <text data-name="0" class="num" transform="translate(19 362.752)" ><tspan x="-18.333" y="0">0</tspan></text>
+                                                <text data-name="60" class="num" transform="rotate(-30 147.795 -276.49)" ><tspan x="-16.45" y="0">60</tspan></text>
+                                                <text data-name="120" class="num" transform="rotate(30 182.87 939.126)" ><tspan x="-20.737" y="0">120</tspan></text>
+                                                <text data-name="180" class="num" transform="translate(621 362.752)" ><tspan x="0" y="0">180</tspan></text>
+                                                <path data-name="line" class="line" d="M634.595 323.7a1 1 0 0 1-1-1v-.3a1 1 0 0 1 1-1h12.949a1 1 0 0 1 1 1v.3a1 1 0 0 1-1 1zM1 323.7a1 1 0 0 1-1-1v-.3a1 1 0 0 1 1-1h12.949a1 1 0 0 1 1 1v.3a1 1 0 0 1-1 1zm587.675-154.823-.149-.259a1 1 0 0 1 .366-1.366l11.213-6.475a1 1 0 0 1 1.366.366l.15.259a1 1 0 0 1-.366 1.366l-11.214 6.475a1 1 0 0 1-1.366-.366zm-533.622.366-11.214-6.475a1 1 0 0 1-.366-1.366l.15-.259a1 1 0 0 1 1.366-.366l11.211 6.475a1 1 0 0 1 .365 1.366l-.149.259a1 1 0 0 1-1.366.366zM475.326 56.569l-.26-.15a1 1 0 0 1-.365-1.366l6.475-11.214a1 1 0 0 1 1.365-.365l.26.149a1 1 0 0 1 .365 1.366L476.692 56.2a1 1 0 0 1-1.366.366zM167.252 56.2l-6.475-11.214a1 1 0 0 1 .366-1.366l.259-.149a1 1 0 0 1 1.366.365l6.475 11.214a1 1 0 0 1-.366 1.366l-.259.15a1 1 0 0 1-1.366-.366zM324.7 14.948a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1h.3a1 1 0 0 1 1 1v12.948a1 1 0 0 1-1 1z" transform="translate(2.391)"/>
+                                                <g class="progress">
+                                                    <!- 게이지 변경 부분은 아래 path stroke-dashoffset 값을 -840 ~ 0으로 조절 가능합니다. ->
+                                                    <path data-name="Graph02" style="stroke-dashoffset: -600;" d="M560 295.724a13.25 13.25 0 0 1 .412-3.287c-.234-146.946-120-266.425-267.189-266.425-146.807 0-266.339 118.866-267.184 265.295A13.225" transform="translate(12 9)" style="" />
+                                                </g>
+                                                <text data-name="0" class="text1" style="font: 50px 'BlackHanSans',sans-serif; color: #000;" x="240" y="210">충전실적</text>
+                                                <text data-name="0" class="text2" x="50%" y="305" dominant-baseline="bottom" text-anchor="middle" style="font: 600 90px 'Montserrat',sans-serif; color: #000;" >180<tspan style="font: 600 40px 'Montserrat',sans-serif; color: #000;" >kWh</tspan></text>
+                                            </svg>
+                                        </div>
+                                         //svg를 줄여보자 -->
+                                    </div>
+                                    <!-- 비로그인시 알림창 -->
+                                    <div class="login-box" style="display: none">
+                                        <button>로그인 후 참여하기</button>
+                                    </div>
+                                    <!-- //비로그인시 알림창 -->
+                                </div>
+                            </div>
+                            <div class="event-detail-inner event-charge-coupon">
+                                <p class="event-tit color-wh">혜택쿠폰</p>
+                                <div class="coupon-list">
+                                    <div class="coupon-item">
+                                        <i class="ic-coupon"><img src="images/ic-car-wash.png" alt="무료 세차 쿠폰 아이콘"></i>
+                                        <p>무료 세차<br />쿠폰</p>
+                                        <button class="off">쿠폰 받기 완료</button>
+                                    </div>
+                                    <div class="coupon-item">
+                                        <i class="ic-coupon"><img src="images/ic-car-refuel.png" alt="5000원 충전 쿠폰 아이콘"></i>
+                                        <p><span>5000</span>원<br />충전 쿠폰</p>
+                                        <button>쿠폰 받기</button>
+                                    </div>
+                                    <div class="coupon-item">
+                                        <i class="ic-coupon"><img src="images/ic-coupon.png" alt="gs25 5000원 쿠폰 아이콘"></i>
+                                        <p><img src="images/gs-25.png" alt="gs 25"><br /><span>5000</span>원 쿠폰</p>
+                                        <button>쿠폰 받기</button>
+                                    </div>
+                                    <i class="coupon-tag"><img src="images/tag.png" alt="3종 택1"></i>
+                                </div>
+                                <p class="coupon-notice">* 1회 실적 충족 시, 1개 혜택 쿠폰 선택 가능합니다.(최대 3회) </p>
+                            </div>
+                            <div class="event-detail-inner event-info">
+                                <h3 class="event-tit">참여방법</h3>
+                                <ol>
+                                    <li>
+                                        <p>에너지 플러스 EV 앱 다운로드 하기</p>
+                                    </li>
+                                    <li>
+                                        <p>회원카드 / NFC / 바로충전으로 충전하기!</p>
+                                        <span>충전 이력 확인 후, 충전 실적 반영(24시간 이내) </span>
+                                    </li>
+                                    <li>
+                                        <p>총 60kWh/ 120kWh/ 180kWh 충전하여 혜택 쿠폰 받기!</p>
+                                        <span>누적 충전 실적 달성 시 마다 무료 세차 쿠폰 or 5,000원 충전 쿠폰 or GS25 5,000원 쿠폰 중 택1</span>
+                                    </li>
+                                    <li>
+                                        <p>쿠폰함 > 발급된 쿠폰 확인 후 사용하기! </p>
+                                        <span>쿠폰 발급일 이후 3030일 이내 사용 가능</span>
+                                    </li>
+                                </ol>
+                            </div>
+                            <div class="event-detail-inner event-notice bg-white">
+                                <h4 class="title is-4 notice-tit">유의사항</h4>
+                                <ul>
+                                    <li>본 이벤트는 에너지플러스 EV 회원만 참여 가능합니다.</li>
+                                    <li>충전실적은 무료 충전 내역 외 추가로 결제한 내역만 충전실적에 해당됩니다.</li>
+                                    <li><img src="images/gs-caltex.png" alt="gs 칼텍스"> 충전기 뿐만 아니라 타사 충전기 사용 시에도 실적이 반영되며, 타 사업자 통신 상황에 따라 실적 반영이 최대 24시간 지연 될 수 있습니다.</li>
+                                    <li>누적 합산한 충전 실적 60kWh 당 택1 쿠폰을 발급 받을 수 있으며, 중복 발급은 불가합니다.</li>
+                                    <li>혜택 쿠폰은 해당 이벤트 페이지 내에서 이벤트 기간(11/14~12/31) 내 발급 할 수 있습니다.(이벤트 기간 종료 시 발급 불가)</li>
+                                    <li>발급받은 쿠폰은 메인 > 쿠폰함에서 확인하실 수 있습니다.</li>
+                                    <li>무료 세차 쿠폰, 5,000원 충전 쿠폰, GS편의점 5,000원 쿠폰은 발급일 이후 30일 이내 사용 가능하며, 기한 만료 시 자동 소진됩니다.</li>
+                                    <li>혜택 쿠폰 발급은 이벤트 기간 내 최대 3회(누적 충전실적 180kWh)까지 발급 됩니다.</li>
+                                    <li>무료충전 외 추가 결제한 금액에 대해서만 <img src="images/gs-point.png" alt="gs 포인트"> 적립 가능합니다.</li>
+                                    <li>발급받은 쿠폰은 타인에게 양도가 불가하며, 부정한 방법 또는 비정상적인 접근을 통해 이벤트 참여인 경우 당첨이 취소됩니다.</li>
+                                    <li>발급받은 쿠폰의 유효기간 연장 및 판매, 현금으로 환불은 불가합니다.(자세한 사항은 각 쿠폰의 하단의 사용방법 및 유의사항 참조)</li>
+                                    <li>이벤트의 운영은 에너지플러스 EV의 운영 정책을 따르며, 상황에 따라 사전 예고 없이 이벤트의 내용 또는 경품이 변경될 수 있습니다.</li>
+                                    <li>기타 문의는 고객센터(1544-5151)를 통해 문의바랍니다.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- //221104수정 -->
+
+                    </div>
+                </section>
+            </div>
+            <!-- // Contents -->
+        </div>
+    </div>
+</body>
+
+</html>
