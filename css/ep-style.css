@@ -38074,8 +38074,8 @@ label {
 .event-img-wrap .event-charge-box .event-charge-inner .event-gauge .arrow {
   position: absolute;
   top: 15.5%;
-  left: 14.8%;
-  width: 68.5%;
+  left: 15.2%%;
+  width: 68.3%;
   padding-top: 68.5%;
   border-radius: 50%;
   z-index: 1;
@@ -38091,9 +38091,9 @@ label {
   top: 50%;
   left: 0%;
   display: block;
-  border-top: 18px solid transparent;
-  border-right: 30px solid #000;
-  border-bottom: 18px solid transparent;
+  border-top: 15px solid transparent;
+  border-right: 27px solid #000;
+  border-bottom: 15px solid transparent;
   transform: translateY(-50%);
 }
 
