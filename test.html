@@ -64,7 +64,7 @@
                       <span class="bg-coin"></span>
                       <div class="event-gauge">
                         <img src="images/event-gauge-bg.png" alt="이벤트" />
-                        <!-- 게이지 화살표 변경 부분은 아래 transform: rotate 값을 3 ~ 179으로 조절 가능합니다. -->
+                        <!-- 게이지 화살표 변경 부분은 아래 transform: rotate 값을 3 ~ 178으로 조절 가능합니다. -->
                         <i class="arrow" style="transform: rotate(3deg);"></i>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -80,7 +80,7 @@
                             /> -->
                             <path
                               d="M30 100 A 40 40 0 0 1 170 100"
-                              style="stroke-dashoffset: 150;"
+                              class="gauge-progress"
                             ></path>
                           </g>
                           <g class="half">
@@ -100,13 +100,13 @@
                             dominant-baseline="bottom"
                             text-anchor="middle"
                           >
-                            180
-                            <tspan>kWh</tspan>
+                            <tspan class="gauge-num">0</tspan>
+                            <tspan class="small">kWh</tspan>
                           </text>
                         </svg>
                         <input
                           type="range"
-                          id="gaugeControl"
+                          id="gaugeTest"
                           min="0"
                           max="180"
                           step="1"
@@ -119,7 +119,23 @@
                           "
                         />
                       </div>
-                      <script></script>
+                      <script>
+                        let range = document.querySelector('#gaugeTest')
+                        let arrow = document.querySelector('.arrow')
+                        let num = document.querySelector('.gauge-num')
+                        let progress = document.querySelector('.gauge-progress')
+
+                        range.addEventListener('input', (e) => {
+                          let value = e.target.value
+                          arrow.style.transform = `rotate(${
+                            value <= 3 ? 3 : value >= 177 ? 177 : value
+                          }deg)`
+                          console.log(e.target.value)
+                          num.innerHTML = value
+                          progress.style.strokeDashoffset =
+                            220 - (220 * value) / 180
+                        })
+                      </script>
                     </div>
                     <!-- 비로그인시 알림창 -->
                     <div class="login-box" style="display: none;">

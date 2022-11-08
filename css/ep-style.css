@@ -38043,6 +38043,7 @@ label {
   fill: none;
   stroke-linecap: round;
   stroke-dasharray: 220;
+  stroke-dashoffset: 220;
 }
 
 .event-img-wrap .event-charge-box .event-charge-inner .event-gauge svg .half {
@@ -38066,7 +38067,7 @@ label {
   .event-gauge
   svg
   .text2
-  tspan {
+  tspan.small {
   font: 600 40px 'Montserrat', sans-serif;
   color: #000;
 }
@@ -38074,7 +38075,7 @@ label {
 .event-img-wrap .event-charge-box .event-charge-inner .event-gauge .arrow {
   position: absolute;
   top: 15.5%;
-  left: 15.2%%;
+  left: 15.2%;
   width: 68.3%;
   padding-top: 68.5%;
   border-radius: 50%;
